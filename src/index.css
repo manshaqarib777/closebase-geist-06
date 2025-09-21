@@ -1,0 +1,325 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Closebase Design System - All colors, gradients, fonts, animations */
+
+@layer base {
+  :root {
+    /* Closebase Brand Colors (HSL) */
+    --color-primary: 250 85% 65%;        /* #6B4CFF - Indigo brand */
+    --color-primary-700: 250 80% 58%;    /* #5B3AE6 - Primary hover */
+    --color-primary-50: 250 100% 97%;    /* Light primary tint */
+    --color-accent: 187 92% 47%;         /* #12D6DF - Cyan accent */
+    --color-accent-50: 187 100% 95%;     /* Light accent tint */
+    
+    /* Semantic Colors */
+    --color-success: 152 69% 42%;        /* #19B87A - Success green */
+    --color-warning: 38 92% 55%;         /* #FFB020 - Warning amber */
+    --color-danger: 4 80% 58%;           /* #E5484D - Danger red */
+    
+    /* Surface & Background */
+    --background: 0 0% 100%;             /* Pure white */
+    --surface: 225 25% 97%;              /* #F6F7FB - Light surface */
+    --surface-secondary: 220 13% 95%;    /* Secondary surface */
+    --glass: 0 0% 100% / 0.8;           /* Glass overlay */
+    
+    /* Text Colors */
+    --foreground: 215 25% 9%;            /* #111827 - Primary text */
+    --muted: 215 16% 42%;                /* #6B7280 - Muted text */
+    --muted-foreground: 215 20% 65%;     /* Secondary text */
+    
+    /* Interactive Elements */
+    --border: 220 13% 91%;               /* Border color */
+    --input: 220 13% 91%;                /* Input borders */
+    --ring: 250 85% 65%;                 /* Focus rings */
+    
+    /* Cards & Components */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 9%;
+    
+    /* Sidebar Variables */
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 215 25% 16%;
+    --sidebar-primary: 250 85% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 25% 96%;
+    --sidebar-accent-foreground: 215 25% 9%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 250 85% 65%;
+    
+    /* Design Tokens */
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius: var(--radius-md);
+    
+    /* Shadows */
+    --shadow-sm: 0 4px 12px hsl(0 0% 0% / 0.04);
+    --shadow-md: 0 8px 24px hsl(0 0% 0% / 0.06);
+    --shadow-lg: 0 16px 40px hsl(0 0% 0% / 0.10);
+    --shadow-glass: 0 8px 32px hsl(250 85% 65% / 0.12);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(250 85% 65%), hsl(280 85% 65%));
+    --gradient-accent: linear-gradient(135deg, hsl(187 92% 47%), hsl(250 85% 65%));
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.9), hsl(0 0% 100% / 0.7));
+    --gradient-hero: linear-gradient(135deg, hsl(250 100% 97%), hsl(187 100% 95%));
+    
+    /* Transitions */
+    --transition-smooth: all 160ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 120ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Pipeline Design Tokens */
+    --board-h: calc(100vh - 180px);
+  }
+
+  
+  /* Typography System */
+  .font-heading {
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  
+  .font-ui {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Closebase Utility Classes */
+  .cb-card { 
+    @apply bg-white rounded-2xl border border-border shadow-sm;
+  }
+  
+  .cb-title { 
+    @apply text-lg font-semibold text-foreground;
+  }
+  
+  .cb-sub { 
+    @apply text-sm text-muted-foreground;
+  }
+
+  .cb-btn { 
+    @apply inline-flex items-center justify-center h-9 px-3 rounded-xl font-medium transition-colors;
+  }
+  
+  .cb-btn-primary { 
+    @apply cb-btn text-white;
+    background: hsl(var(--color-primary));
+  }
+  
+  .cb-btn-primary:hover { 
+    background: hsl(var(--color-primary-700));
+  }
+  
+  .cb-btn-ghost { 
+    @apply cb-btn bg-black/5 hover:bg-black/10 text-foreground;
+  }
+  
+  .cb-btn-outline { 
+    @apply cb-btn border border-primary text-primary hover:bg-primary/5;
+  }
+
+  .cb-input { 
+    @apply h-10 w-full rounded-xl border border-input bg-white px-3 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-ring;
+  }
+  
+  .cb-select { 
+    @apply cb-input pr-8;
+  }
+  
+  .cb-label { 
+    @apply text-sm font-medium text-foreground;
+  }
+  
+  .cb-help { 
+    @apply text-xs text-muted-foreground;
+  }
+
+  .cb-chip { 
+    @apply inline-flex items-center h-6 px-2.5 rounded-full text-sm bg-black/5 text-foreground;
+  }
+  
+  .cb-chip-violet { 
+    @apply cb-chip;
+    color: #5B4BE6;
+    background: #EEEAFE;
+  }
+  
+  .cb-chip-blue { 
+    @apply cb-chip;
+    color: #1E40AF;
+    background: #E7F0FF;
+  }
+  
+  .cb-chip-green { 
+    @apply cb-chip;
+    color: #166534;
+    background: #EAF7EE;
+  }
+  
+  .cb-chip-orange { 
+    @apply cb-chip;
+    color: #9A3412;
+    background: #FFF2E0;
+  }
+  
+  .cb-chip-red { 
+    @apply cb-chip;
+    color: #B91C1C;
+    background: #FEECEC;
+  }
+
+  .cb-progress { 
+    @apply h-2 w-full rounded-full bg-black/10;
+  }
+  
+  .cb-progress > div { 
+    @apply h-2 rounded-full;
+    background: hsl(var(--color-primary));
+  }
+
+  .cb-dropzone { 
+    @apply grid place-items-center aspect-video rounded-xl border border-dashed border-border;
+    background: #F6F7FB;
+  }
+  
+  .cb-dropzone:hover { 
+    background: #F3F4F8;
+  }
+
+}
+
+@layer components {
+  /* Dashboard Design Tokens */
+  .tw-card {
+    @apply bg-white rounded-2xl border border-black/5 shadow-sm;
+  }
+  
+  .tw-kpi {
+    @apply tw-card p-4 flex justify-between items-start;
+  }
+  
+  .tw-chip {
+    @apply inline-flex items-center h-6 px-2.5 rounded-full text-sm bg-black/5;
+  }
+  
+  .tw-chip-good {
+    @apply tw-chip bg-emerald-50 text-emerald-700;
+  }
+  
+  .tw-chip-warn {
+    @apply tw-chip bg-orange-50 text-orange-700;
+  }
+  
+  .tw-chip-muted {
+    @apply tw-chip text-foreground/70 border border-border;
+    background-color: hsl(var(--surface));
+  }
+  
+  .tw-chip-fit {
+    @apply tw-chip bg-primary/10 text-primary font-medium border border-primary/20;
+  }
+  
+  .tw-btn-outline {
+    @apply h-9 px-3 rounded-xl border border-primary text-primary hover:bg-primary/5 font-ui font-medium;
+  }
+  
+  .tw-btn-secondary {
+    @apply h-9 px-3 rounded-xl bg-black/5 hover:bg-black/10 font-ui font-medium;
+  }
+  
+  .tw-btn-ghost {
+    @apply h-8 px-3 rounded-xl text-foreground/80;
+  }
+  
+  .tw-btn-ghost:hover {
+    background-color: hsl(var(--surface) / 0.5);
+  }
+  
+  .tw-lane {
+    @apply tw-card flex flex-col min-w-[360px] w-[380px];
+    height: var(--board-h);
+  }
+  
+  .tw-dropok {
+    @apply ring-2 ring-primary/30 bg-primary/5;
+  }
+
+  /* Color-coded chips for job key data */
+  .tw-chip-violet {
+    @apply tw-chip bg-violet-50 text-violet-700 border border-violet-200;
+  }
+  
+  .tw-chip-blue {
+    @apply tw-chip bg-blue-50 text-blue-700 border border-blue-200;
+  }
+  
+  .tw-chip-green {
+    @apply tw-chip bg-emerald-50 text-emerald-700 border border-emerald-200;
+  }
+  
+  .tw-chip-orange {
+    @apply tw-chip bg-orange-50 text-orange-700 border border-orange-200;
+  }
+
+  /* Stage pills with colors */
+  .tw-stage-beworben {
+    @apply tw-chip bg-blue-50 text-blue-700 border border-blue-200;
+  }
+  
+  .tw-stage-shortlist {
+    @apply tw-chip bg-yellow-50 text-yellow-700 border border-yellow-200;
+  }
+  
+  .tw-stage-interview {
+    @apply tw-chip bg-purple-50 text-purple-700 border border-purple-200;
+  }
+  
+  .tw-stage-eingestellt {
+    @apply tw-chip bg-green-50 text-green-700 border border-green-200;
+  }
+
+  /* A11y Focus rings */
+  :focus-visible {
+    outline: none;
+  }
+  
+  .focus-ring:focus-visible {
+    @apply ring-2 ring-primary ring-offset-2 rounded-lg;
+  }
+
+  /* Skeleton loading animation */
+  .tw-skeleton {
+    @apply animate-pulse bg-black/10 rounded;
+  }
+
+  /* Density Toggle - Compact Mode */
+  .compact .p-4 {
+    padding: 0.75rem !important;
+  }
+  
+  .compact {
+    --board-h: calc(100vh - 160px);
+  }
+  
+  .compact h3 {
+    font-size: 14px !important;
+  }
+  
+  .compact .space-y-3 > * + * {
+    margin-top: 0.5rem !important;
+  }
+}

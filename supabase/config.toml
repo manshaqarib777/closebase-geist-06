@@ -1,0 +1,26 @@
+project_id = "xpftqiboqtumlketjhmw"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+external_providers = []
+
+[edge_functions]
+enabled = true
+inspector_port = 8083
+
+[functions.send-application-notifications]
+verify_jwt = false
